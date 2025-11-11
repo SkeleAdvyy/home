@@ -404,7 +404,7 @@
         }
 
         .skill-card {
-            background: rgba(20, 20, 20, 0.8);
+            background: rgba(49, 49, 49, 0.8);
             border-radius: 15px;
             padding: 25px;
             display: flex;
@@ -498,16 +498,16 @@
         }
 
         .favorite-card {
-            background: rgba(30, 30, 30, 0.8);
+            background: rgba(32, 32, 32, 0.507);
             border-radius: 15px;
             padding: 30px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            transition: all 0.3s ease;
+            transition: all 0.1s ease;
             position: relative;
             overflow: hidden;
-            border: 2px solid transparent;
+            border: 4px solid transparent;
         }
 
         .favorite-card::before {
@@ -543,7 +543,7 @@
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.034);
             padding: 15px;
         }
 
@@ -704,9 +704,70 @@
             background: rgba(30, 30, 30, 0.2);
         }
 
+        .quotes-section {
+            padding: 80px 20px;
+            background-color: #000000;
+            background-image: 
+                radial-gradient(circle at 75% 25%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 25% 75%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+        }
+
+        .quotes-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .quotes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .quote-card {
+            background: rgba(30, 30, 30, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .quote-card:hover {
+            border-color: rgba(168, 85, 247, 0.7);
+            box-shadow: 0 4px 20px rgba(168, 85, 247, 0.3);
+            background: rgba(40, 40, 40, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .quote-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #c084fc;
+        }
+
+        .quote-text {
+            color: #e2e8f0;
+            line-height: 1.6;
+            font-style: italic;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .quote-author {
+            color: #a855f7;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
         @supports not (backdrop-filter: blur(10px)) {
-            .about-card {
-                background: rgba(30, 30, 30, 0.8);
+            .about-card, .quote-card {
+                background: rgba(129, 129, 129, 0.8);
             }
         }
 
@@ -792,6 +853,10 @@
             .main-card {
                 grid-column: 1;
                 grid-row: 1;
+            }
+
+            .quotes-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -1046,6 +1111,32 @@
                         </ul>
                         <p>Unfortunately, I don't use Arch. BTW.</p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="quotes-section">
+        <div class="quotes-container">
+            <h2 class="section-title">Quotes</h2>
+            
+            <div class="quotes-grid">
+                <div class="quote-card">
+                    <div class="quote-icon">"</div>
+                    <p class="quote-text">Se becco francese uso tonfa.</p>
+                    <p class="quote-author">- Daniel Drizaky</p>
+                </div>
+                
+                <div class="quote-card">
+                    <div class="quote-icon">"</div>
+                    <p class="quote-text">Se non mi fermano i freni mi fermerà il muro.</p>
+                    <p class="quote-author">- My Coding Mate</p>
+                </div>
+                
+                <div class="quote-card">
+                    <div class="quote-icon">"</div>
+                    <p class="quote-text">Se vai a dormire io ti riempo di mazzate</p>
+                    <p class="quote-author">- Abstract Abuser</p>
                 </div>
             </div>
         </div>
