@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skeleaddivi | Home</title>
-   <link rel="icon" type="image/png" href="https://skeleaddivi.xyz/img/pfp.png">
+    <link rel="icon" type="image/png" href="https://skeleaddivi.xyz/img/pfp.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         * {
@@ -103,7 +103,7 @@
             height: 18px;
         }
 
-                .nav-link2 {
+        .nav-link2 {
             color: rgb(217, 93, 255);
             text-decoration: none;
             font-weight: 500;
@@ -620,6 +620,96 @@
             }
         }
 
+        .about-section {
+            padding: 80px 20px;
+            background-color: #000000;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+        }
+
+        .about-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+
+        .about-card {
+            background: rgba(30, 30, 30, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .about-card:hover {
+            border-color: rgba(168, 85, 247, 0.7);
+            box-shadow: 0 4px 20px rgba(168, 85, 247, 0.3);
+            background: rgba(40, 40, 40, 0.4);
+        }
+
+        .main-card {
+            grid-column: 1;
+            grid-row: 1 / span 2;
+        }
+
+        .side-card {
+            min-height: 180px;
+        }
+
+        .about-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #c084fc;
+            text-align: center;
+            border-bottom: 1px solid rgba(168, 85, 247, 0.3);
+            padding-bottom: 8px;
+        }
+
+        .about-content {
+            color: #e2e8f0;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .about-content p {
+            margin-bottom: 12px;
+        }
+
+        .about-content ul {
+            margin-left: 18px;
+            margin-bottom: 12px;
+        }
+
+        .about-content li {
+            margin-bottom: 6px;
+        }
+
+        .about-content strong {
+            color: #a855f7;
+        }
+
+        .hard-blur {
+            backdrop-filter: blur(15px) saturate(180%);
+            -webkit-backdrop-filter: blur(15px) saturate(180%);
+            background: rgba(30, 30, 30, 0.2);
+        }
+
+        @supports not (backdrop-filter: blur(10px)) {
+            .about-card {
+                background: rgba(30, 30, 30, 0.8);
+            }
+        }
+
         @media (max-width: 768px) {
             .navbar {
                 flex-direction: column;
@@ -692,6 +782,16 @@
 
             .arrow-container {
                 bottom: 1rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
+            
+            .main-card {
+                grid-column: 1;
+                grid-row: 1;
             }
         }
 
@@ -884,5 +984,82 @@
                 </div>
             </div>
     </section>
+
+    <section class="about-section">
+        <div class="about-container">
+            <h2 class="section-title">About Me</h2>
+            
+            <div class="about-grid">
+                <div class="about-card main-card">
+                    <h3 class="about-title">Who am I</h3>
+                    <div class="about-content">
+                        <p>I'm skeleaddivi, I am 15 years old, I started coding at 11.</p>
+                        <p>It all started in 2020/2021 with Python, then JavaScript, then HTML and so on. When I saw Node.js, oh yeah, that was love at first sight.</p>
+                        <p>But now I have something to say:</p>
+                        <p>But now I have something to say</p>
+                        <p>I hate <strong>black</strong> peopleeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</p>
+                        <p>I hate <strong>black</strong> peopleeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</p>
+                        <p>I hate <strong>black</strong> peopleeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</p>
+                        <p>I hate <strong>black</strong> peopleeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</p>
+                        <p>I hate <strong>black</strong> peopleeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</p>
+                        <p>I hate <strong>black</strong> peopleeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</p>
+                        <p>I hate <strong>black</strong> peopleeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</p>
+                        <p>I hate <strong>black</strong> peopleeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</p>
+                        <p>I hate <strong>black</strong> peopleeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</p>
+                        <p>I hate <strong>black</strong> peopleeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</p>
+                        <p>I hate <strong>black</strong> peopleeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</p>
+                        <p>I hate <strong>black</strong> peopleeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</p>
+                        <p>I hate <strong>black</strong> peopleeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</p>
+                        <p>I hate <strong>black</strong> peopleeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</p>
+                        <p>I hate <strong>black</strong> peopleeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</p>
+                        <p>I hate <strong>black</strong> peopleeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</p>
+                        <p>I hate <strong>black</strong> peopleeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</p>
+                        <p>I hate <strong>black</strong> peopleeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</p>
+                    </div>
+                </div>
+                
+                <div class="about-card side-card">
+                    <h3 class="about-title">School</h3>
+                    <div class="about-content">
+                        <p>I currently attend the <strong>Computer Science and Telecommunications</strong> program and I'm in my second year</p>
+                        <p>In my academic career I am studying:</p>
+                        <ul>
+                            <li>Web development</li>
+                            <li>Algorithms</li>
+                            <li>Software development</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="about-card side-card">
+                    <h3 class="about-title">Preferred Operating System</h3>
+                    <div class="about-content">
+                        <p>It's literally <strong>Arch Linux</strong></p>
+                        <p>The real reason has nothing to do with how it's made</p>
+                        <ul>
+                            <li>it's something very personal. Arch Linux is part of me, it's inside me, in my heart, it's really something important to me, really.</li>
+                        </ul>
+                        <p>Unfortunately, I don't use Arch. BTW.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.about-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
 </body>
 </html>
