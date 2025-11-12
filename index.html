@@ -908,6 +908,41 @@
             font-size: 1.2rem;
             filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
         }
+        
+.starry-background {
+    position: relative;
+    overflow: hidden;
+}
+
+.starry-background::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(2px 2px at 10% 20%, rgba(200, 150, 255, 0.9) 50%, transparent 100%),
+                radial-gradient(1px 1px at 80% 40%, rgba(210, 160, 255, 0.8) 50%, transparent 100%),
+                radial-gradient(2px 2px at 50% 90%, rgba(190, 130, 255, 0.9) 50%, transparent 100%),
+                radial-gradient(1px 1px at 30% 70%, rgba(220, 180, 255, 0.8) 50%, transparent 100%),
+                radial-gradient(1.5px 1.5px at 60% 10%, rgba(200, 160, 255, 0.9) 50%, transparent 100%);
+    background-repeat: repeat;
+    background-size: 300px 300px;
+    animation: moveStars 60s linear infinite;
+    z-index: 0;
+    opacity: 0.6;
+}
+
+@keyframes moveStars {
+    from { transform: translateY(0); }
+    to { transform: translateY(-300px); }
+}
+
+.starry-background > * {
+    position: relative;
+    z-index: 2;
+}
+
     </style>
 </head>
 <body>
@@ -1011,7 +1046,7 @@
         </div>
     </section>
 
-    <section class="skills-section">
+    <section class="skills-section starry-background">
         <div class="container">
             <h2 class="section-title">Favorite Languages</h2>   
             <div class="skills-category favorite-section">
@@ -1058,7 +1093,7 @@
             </div>
     </section>
 
-    <section class="about-section">
+    <section class="about-section starry-background">
         <div class="about-container">
             <h2 class="section-title">About Me</h2>
             
@@ -1116,7 +1151,7 @@
         </div>
     </section>
 
-    <section class="quotes-section">
+    <section class="quotes-section starry-background">
         <div class="quotes-container">
             <h2 class="section-title">Quotes</h2>
             
