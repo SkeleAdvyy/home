@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&amp;display=swap" rel="stylesheet">
     <title>Skeleaddivi | Home</title>
     <link rel="icon" type="image/png" href="https://skeleaddivi.xyz/img/pfp.png">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -983,6 +984,52 @@
     font-size: 1.3rem;
 }
 
+ #ban-counter {
+    text-align: center;
+    margin-top: 140px;
+    margin-bottom: 120px;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 18px;
+  }
+
+  #ban-counter .ban-text {
+    font-size: 3.8rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: #ffffff;
+    text-shadow: 0 0 18px rgba(255,255,255,0.15);
+  }
+
+  #banNumber {
+    font-size: 5rem;
+    font-weight: 900;
+    color: #c084fc;
+    text-shadow:
+      0 0 14px rgba(192,132,252,0.55),
+      0 0 26px rgba(192,132,252,0.35);
+    display: inline-block;
+    transform-origin: center;
+    transition: transform 0.22s cubic-bezier(.16,1.1,.3,1);
+  }
+
+  #times {
+    opacity: 0;
+    font-size: 3.8rem;
+    font-weight: 800;
+    color: #fff;
+    transform: translateY(10px);
+    transition: all 0.6s cubic-bezier(.16,1,.3,1);
+  }
+
+  @media (max-width: 768px) {
+    #ban-counter .ban-text { font-size: 2.4rem; }
+    #banNumber { font-size: 3.2rem; }
+    #times { font-size: 2.4rem; }
+  }
+  
     </style>
 </head>
 <body>
@@ -1285,6 +1332,12 @@
         </div>
     </section>
 
+<div id="ban-counter">
+  <span class="ban-text">Banned on discord like</span>
+  <span id="banNumber">1</span>
+  <span id="times">times</span>
+</div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const cards = document.querySelectorAll('.about-card');
@@ -1299,6 +1352,48 @@
                 });
             });
         });
+        
+        (function() {
+  const num = document.getElementById("banNumber");
+  const times = document.getElementById("times");
+
+  let current = 1;
+  const target = 17;
+  const pausePoint = 8;
+
+  function pop() {
+    num.style.transform = "scale(1.35)";
+    setTimeout(() => num.style.transform = "scale(1)", 180);
+  }
+
+  function animateNumber() {
+    function step() {
+      if (current < target) {
+        current++;
+
+        if (current === pausePoint) {
+          num.textContent = current;
+          pop();
+          return setTimeout(step, 850);
+        }
+
+        let speed = current < pausePoint ? 130 : 45;
+
+        num.textContent = current;
+        pop();
+        setTimeout(step, speed);
+      } else {
+        times.style.opacity = "1";
+        times.style.transform = "translateY(0)";
+      }
+    }
+    step();
+  }
+
+  window.addEventListener("load", () => {
+    setTimeout(animateNumber, 300);
+  });
+})();
     </script>
 </body>
 </html>
