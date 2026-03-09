@@ -42,6 +42,12 @@
             justify-content: center;
             align-items: center;
             user-select: none;
+            animation: floatingText 20s ease-in-out infinite;
+        }
+
+        @keyframes floatingText {
+            0%, 100% { transform: scale(1) translateY(0); }
+            50% { transform: scale(1.1) translateY(-20px); }
         }
 
         .navbar {
@@ -56,6 +62,12 @@
             backdrop-filter: var(--glass);
             z-index: 1000;
             border-bottom: 1px solid var(--border-color);
+            animation: slideDown 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         .hero {
@@ -64,6 +76,7 @@
             align-items: center;
             justify-content: center;
             position: relative;
+            perspective: 1000px;
         }
 
         #bg-video {
@@ -81,6 +94,17 @@
             border-radius: 50%;
             position: relative;
             border: 1px solid var(--border-color);
+            transition: transform 0.5s ease;
+            animation: heroEntrance 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .hero:hover .neon-circle {
+            transform: scale(1.05) rotateY(10deg);
+        }
+
+        @keyframes heroEntrance {
+            from { transform: scale(0.5) rotate(-20deg); opacity: 0; }
+            to { transform: scale(1) rotate(0); opacity: 1; }
         }
 
         .neon-border {
@@ -100,6 +124,15 @@
             font-weight: 900;
             margin-top: 20px;
             text-transform: uppercase;
+            background: linear-gradient(90deg, #fff, var(--accent), #fff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s linear infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
         }
 
         .main-content {
@@ -130,7 +163,11 @@
             height: 2px;
             flex-grow: 1;
             background: linear-gradient(90deg, var(--accent), transparent);
+            transform-origin: left;
+            animation: growLine 1.5s ease forwards;
         }
+
+        @keyframes growLine { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 
         .bento-card {
             background: var(--bg-card);
@@ -138,21 +175,33 @@
             border-radius: 24px;
             padding: 35px;
             backdrop-filter: var(--glass);
-            transition: 0.4s ease;
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
         }
 
         .bento-card:hover {
             border-color: var(--accent);
-            background: rgba(255, 255, 255, 0.05);
-            transform: translateY(-5px);
+            background: rgba(41, 98, 255, 0.08);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
         .span-2 { grid-column: span 2; }
         .span-4 { grid-column: span 4; }
         .row-2 { grid-row: span 2; }
 
-        .progress-bg { height: 6px; background: rgba(255,255,255,0.1); border-radius: 10px; margin-top: 8px; }
-        .progress-fill { height: 100%; background: var(--accent); width: 0; transition: width 2s ease; border-radius: 10px; }
+        .progress-bg { height: 6px; background: rgba(255,255,255,0.1); border-radius: 10px; margin-top: 8px; overflow: hidden;}
+        .progress-fill { height: 100%; background: var(--accent); width: 0; transition: width 1.5s cubic-bezier(0.65, 0, 0.35, 1); border-radius: 10px; position: relative; }
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: scan 2s infinite;
+        }
+
+        @keyframes scan { from { transform: translateX(-100%); } to { transform: translateX(100%); } }
 
         .btn-social {
             padding: 12px 25px;
@@ -163,20 +212,37 @@
             font-weight: 600;
             font-size: 0.8rem;
             transition: 0.3s;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
         }
 
-        .btn-social:hover {
+        .btn-social::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 0; height: 0;
             background: var(--accent);
-            box-shadow: 0 0 15px var(--accent);
+            transition: 0.4s;
+            z-index: -1;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
         }
 
-        .reveal { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
+        .btn-social:hover::before { width: 300%; height: 300%; }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
         @keyframes pulse-spotify {
             0% { box-shadow: 0 0 0 0 rgba(29, 185, 84, 0.4); }
             70% { box-shadow: 0 0 0 15px rgba(29, 185, 84, 0); }
             100% { box-shadow: 0 0 0 0 rgba(29, 185, 84, 0); }
+        }
+
+        @keyframes blink { 
+            0%, 100% { opacity: 1; } 
+            50% { opacity: 0.3; } 
         }
 
         @media (max-width: 900px) {
@@ -186,7 +252,6 @@
     </style>
 </head>
 <body>
-
     <div class="anime-bg-text">スケレアドディヴィ</div>
 
     <nav class="navbar">
@@ -250,11 +315,11 @@
         </div>
 
         <div class="bento-card reveal" style="text-align: center;">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" width="35">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" width="35" style="transition: 0.3s;" onmouseover="this.style.transform='rotate(360deg)'" onmouseout="this.style.transform='rotate(0)'">
             <p style="font-size: 0.6rem; font-weight: 900; margin-top: 10px;">TYPESCRIPT</p>
         </div>
         <div class="bento-card reveal" style="text-align: center;">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" width="35">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" width="35" style="transition: 0.3s;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
             <p style="font-size: 0.6rem; font-weight: 900; margin-top: 10px;">C++</p>
         </div>
 
@@ -289,7 +354,7 @@
         <div class="bento-card span-2 reveal" style="display: flex; flex-direction: column; justify-content: center;">
             <p style="font-size: 0.7rem; opacity: 0.5; margin-bottom: 10px;">SYSTEM STATUS</p>
             <div style="display: flex; align-items: center; gap: 10px;">
-                <div style="width: 10px; height: 10px; background: #00e676; border-radius: 50%; box-shadow: 0 0 10px #00e676;"></div>
+                <div style="width: 10px; height: 10px; background: #00e676; border-radius: 50%; box-shadow: 0 0 10px #00e676; animation: blink 1s infinite;"></div>
                 <p style="font-weight: 600; font-size: 0.9rem; letter-spacing: 1px;">ALL WEBSITES ONLINE</p>
             </div>
             <p style="font-size: 0.7rem; margin-top: 10px; opacity: 0.6; font-family: monospace; color: var(--accent);">> skeleaddivi.xyz - OK</p>
@@ -335,7 +400,11 @@
             let count = 0;
             if(banNum.innerText !== "0") return;
             const interval = setInterval(() => {
-                if (count >= 10) clearInterval(interval);
+                if (count >= 10) {
+                    clearInterval(interval);
+                    banNum.style.transform = "scale(1.2)";
+                    setTimeout(() => banNum.style.transform = "scale(1)", 200);
+                }
                 else { count++; banNum.innerText = count; }
             }, 100);
         }
