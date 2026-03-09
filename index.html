@@ -151,7 +151,7 @@
             font-size: 1.8rem;
             text-transform: uppercase;
             letter-spacing: 3px;
-            margin-top: 40px;
+            margin-top: 60px;
             margin-bottom: 10px;
             display: flex;
             align-items: center;
@@ -183,26 +183,18 @@
         .bento-card:hover {
             border-color: var(--accent);
             background: rgba(41, 98, 255, 0.08);
-            transform: translateY(-8px) scale(1.02);
+            transform: translateY(-8px) scale(1.01);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
         .span-2 { grid-column: span 2; }
+        .span-3 { grid-column: span 3; }
         .span-4 { grid-column: span 4; }
         .row-2 { grid-row: span 2; }
 
         .progress-bg { height: 6px; background: rgba(255,255,255,0.1); border-radius: 10px; margin-top: 8px; overflow: hidden;}
         .progress-fill { height: 100%; background: var(--accent); width: 0; transition: width 1.5s cubic-bezier(0.65, 0, 0.35, 1); border-radius: 10px; position: relative; }
-        .progress-fill::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            animation: scan 2s infinite;
-        }
-
-        @keyframes scan { from { transform: translateX(-100%); } to { transform: translateX(100%); } }
-
+        
         .btn-social {
             padding: 12px 25px;
             border: 1px solid var(--accent);
@@ -234,20 +226,22 @@
         .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        @keyframes pulse-spotify {
-            0% { box-shadow: 0 0 0 0 rgba(29, 185, 84, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(29, 185, 84, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(29, 185, 84, 0); }
-        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
-        @keyframes blink { 
-            0%, 100% { opacity: 1; } 
-            50% { opacity: 0.3; } 
+        .terminal-header {
+            background: rgba(255,255,255,0.1);
+            padding: 8px 15px;
+            display: flex;
+            gap: 6px;
+            border-radius: 12px 12px 0 0;
+            margin: -35px -35px 20px -35px;
         }
+        .dot { width: 10px; height: 10px; border-radius: 50%; }
+        .red { background: #ff5f56; } .yellow { background: #ffbd2e; } .green { background: #27c93f; }
 
         @media (max-width: 900px) {
             .main-content { grid-template-columns: repeat(2, 1fr); }
-            .span-2, .span-4, .grid-title { grid-column: span 2; }
+            .span-2, .span-3, .span-4, .grid-title { grid-column: span 2; }
         }
     </style>
 </head>
@@ -281,104 +275,111 @@
 
         <div class="bento-card span-2 row-2 reveal">
             <h2 style="color: var(--accent); margin-bottom: 15px;">ABOUT ME</h2>
-            <p style="font-size: 1rem; opacity: 0.7; line-height: 1.6;">
-                I hate nice girls.
-                If they so much as say hello, it stays on my mind.
-                If they return texts, my heart races.
-                The day one calls me, I know I'll look at my call history and grin.
-                But that's just them being nice.
-                People who are nice to me are also nice to everyone else.
-                I almost end up forgetting that.
-                If the truth is cruel , then lies must be kind.
-                That's why kindness is a lie.
-                I gave up on always expecting it,
-                always mistaking it,
-                and even hoping for it.
-                Someone who's' worked so hard at being alone doesn't fall for the
-                same trick twice.
-                I'm a veteran at this.
-                I’m the best when it comes to losing.
-                That's why I'll always hate nice girls.
+            <p style="font-size: 0.95rem; opacity: 0.7; line-height: 1.6;">
+                I hate nice girls. Se dicono semplicemente "ciao", mi resta impresso. 
+                Se rispondono ai messaggi, il cuore accelera. Se mi chiamano, sorrido guardando la cronologia. 
+                Ma è solo gentilezza. Chi è gentile con me lo è con tutti. 
+                Se la verità è crudele, allora le bugie devono essere gentili. 
+                Ecco perché la gentilezza è una bugia. Ho smesso di aspettarmela. 
+                Chi ha lavorato duramente per restare solo non cade nello stesso trucco due volte. 
+                Sono un veterano in questo. Sono il migliore quando si tratta di perdere.
             </p>
         </div>
 
         <div class="bento-card span-2 reveal">
-            <p style="font-size: 0.7rem; opacity: 0.5; letter-spacing: 2px; margin-bottom: 15px;">STATS</p>
+            <p style="font-size: 0.7rem; opacity: 0.5; letter-spacing: 2px; margin-bottom: 15px;">MAIN SKILLS</p>
             <div style="margin-bottom: 15px;">
-                <div style="display:flex; justify-content:space-between; font-size: 0.8rem;"><span>BACKEND</span><span>85%</span></div>
+                <div style="display:flex; justify-content:space-between; font-size: 0.8rem;"><span>BACKEND (Node/C++)</span><span>85%</span></div>
                 <div class="progress-bg"><div class="progress-fill" data-width="85%"></div></div>
             </div>
             <div>
-                <div style="display:flex; justify-content:space-between; font-size: 0.8rem;"><span>FRONTEND</span><span>92%</span></div>
+                <div style="display:flex; justify-content:space-between; font-size: 0.8rem;"><span>FRONTEND (React/CSS)</span><span>92%</span></div>
                 <div class="progress-bg"><div class="progress-fill" data-width="92%"></div></div>
             </div>
         </div>
 
         <div class="bento-card reveal" style="text-align: center;">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" width="35" style="transition: 0.3s;" onmouseover="this.style.transform='rotate(360deg)'" onmouseout="this.style.transform='rotate(0)'">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" width="35">
             <p style="font-size: 0.6rem; font-weight: 900; margin-top: 10px;">TYPESCRIPT</p>
         </div>
         <div class="bento-card reveal" style="text-align: center;">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" width="35" style="transition: 0.3s;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" width="35">
             <p style="font-size: 0.6rem; font-weight: 900; margin-top: 10px;">C++</p>
         </div>
 
-        <div class="grid-title reveal">Archives.</div>
+        <div class="grid-title reveal">Workspace.</div>
 
-        <div class="bento-card span-4 reveal" style="border-left: 4px solid var(--accent); text-align: center;">
-            <p style="font-size: 1.4rem; font-style: italic; font-weight: 600;">"Fra quella è una faccia non da c***o ma proprio un c***o nel c**o. E tu sei solo una faccia da c**o"</p>
-            <p style="opacity: 0.4; font-size: 0.8rem; margin-top: 10px;">— MAXIBON</p>
+        <div class="bento-card span-3 reveal">
+            <div class="terminal-header">
+                <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                <span style="font-size: 0.6rem; opacity: 0.5; margin-left: 10px;">zsh — 80x24</span>
+            </div>
+            <p style="font-family: monospace; font-size: 0.85rem; line-height: 1.5;">
+                <span style="color: var(--accent)">➜</span> <span style="color: #00e676;">~</span> neofetch<br>
+                <span style="color: var(--accent)">OS</span>: Arch Linux x86_64 <br>
+                <span style="color: var(--accent)">Host</span>: Custom Build <br>
+                <span style="color: var(--accent)">Kernel</span>: 6.x.x-arch1-1 <br>
+                <span style="color: var(--accent)">Shell</span>: zsh 5.9 <br>
+                <span style="color: var(--accent)">WM</span>: Hyprland <br>
+                <span style="color: var(--accent)">Editor</span>: Neovim (NvChad)
+            </p>
         </div>
 
-        <div class="bento-card span-2 reveal">
-            <p style="font-size: 0.7rem; opacity: 0.5; margin-bottom: 10px;">CURRENT STACK</p>
-            <p style="font-weight: 900; color: var(--accent); letter-spacing: 1px;">ARCH / NVIM / KITTY / ZSH</p>
+        <div class="bento-card reveal" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;">
+            <p style="font-size: 0.7rem; opacity: 0.5;">STATUS</p>
+            <div style="width: 12px; height: 12px; background: #00e676; border-radius: 50%; box-shadow: 0 0 15px #00e676; animation: blink 1s infinite;"></div>
+            <p style="font-weight: 900; font-size: 0.8rem;">ONLINE</p>
+        </div>
+
+        <div class="grid-title reveal">Toolbox.</div>
+
+        <div class="bento-card reveal" style="text-align:center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="30"><p style="font-size:0.5rem; margin-top:5px">PYTHON</p></div>
+        <div class="bento-card reveal" style="text-align:center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="30"><p style="font-size:0.5rem; margin-top:5px">JAVASCRIPT</p></div>
+        <div class="bento-card reveal" style="text-align:center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="30"><p style="font-size:0.5rem; margin-top:5px">GIT</p></div>
+        <div class="bento-card reveal" style="text-align:center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" width="30"><p style="font-size:0.5rem; margin-top:5px">DOCKER</p></div>
+
+        <div class="grid-title reveal">Archives & Stats.</div>
+
+        <div class="bento-card span-4 reveal" style="border-left: 4px solid var(--accent);">
+            <p style="font-size: 1.2rem; font-style: italic; font-weight: 600; text-align: center;">
+                "Fra quella è una faccia non da c***o ma proprio un c***o nel c**o. E tu sei solo una faccia da c**o"
+            </p>
+            <p style="opacity: 0.4; font-size: 0.7rem; margin-top: 15px; text-align: right;">— MAXIBON MEMORIES</p>
         </div>
 
         <div class="bento-card span-2 reveal" style="background: var(--accent); border: none;">
-            <p style="font-size: 0.7rem; font-weight: 600; opacity: 0.8;">PROJECTS DONE</p>
-            <p style="font-size: 3.5rem; font-weight: 900; line-height: 1;">100+</p>
+            <p style="font-size: 0.7rem; font-weight: 600; opacity: 0.8;">EXPERIENCE</p>
+            <p style="font-size: 3rem; font-weight: 900; line-height: 1;">4+ YRS</p>
+            <p style="font-size: 0.7rem; margin-top: 10px; opacity: 0.8;">Coding since 2020</p>
         </div>
 
-        <div class="bento-card span-2 reveal" style="display: flex; align-items: center; gap: 20px;">
-            <div style="min-width: 50px; height: 50px; background: #1db954; border-radius: 50%; display: flex; justify-content: center; align-items: center; animation: pulse-spotify 2s infinite;">
-                <svg width="24" height="24" fill="#fff" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.84.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.6.18-1.2.72-1.38 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.56.3z"/></svg>
-            </div>
-            <div>
-                <p style="font-size: 0.7rem; opacity: 0.5; margin-bottom: 2px;">NOW PLAYING</p>
-                <p style="font-weight: 900; color: #fff; font-size: 0.9rem;">Nothing</p>
-                <p style="font-size: 0.75rem; color: var(--accent);"></p>
-            </div>
-        </div>
-
-        <div class="bento-card span-2 reveal" style="display: flex; flex-direction: column; justify-content: center;">
-            <p style="font-size: 0.7rem; opacity: 0.5; margin-bottom: 10px;">SYSTEM STATUS</p>
-            <div style="display: flex; align-items: center; gap: 10px;">
-                <div style="width: 10px; height: 10px; background: #00e676; border-radius: 50%; box-shadow: 0 0 10px #00e676; animation: blink 1s infinite;"></div>
-                <p style="font-weight: 600; font-size: 0.9rem; letter-spacing: 1px;">ALL WEBSITES ONLINE</p>
-            </div>
-            <p style="font-size: 0.7rem; margin-top: 10px; opacity: 0.6; font-family: monospace; color: var(--accent);">> skeleaddivi.xyz - OK</p>
-            <p style="font-size: 0.7rem; margin-top: 10px; opacity: 0.6; font-family: monospace; color: var(--accent);">> skeleaddivi.xyz/projects - OK</p>
+        <div class="bento-card span-2 reveal" id="ban-trigger" style="background: #fff; color: #000; text-align: center;">
+            <p style="font-size: 0.6rem; font-weight: 900; opacity: 0.5; letter-spacing: 3px;">TOTAL BANS</p>
+            <div id="banNumber" style="font-size: 4rem; font-weight: 900; line-height: 1;">0</div>
+            <p style="font-size: 0.7rem; font-weight: 900; color: var(--accent);">STILL STANDING</p>
         </div>
 
         <div class="grid-title reveal">Connect.</div>
 
-        <div class="bento-card span-2 reveal" style="display: flex; gap: 10px; justify-content: center; align-items: center; flex-wrap: wrap;">
-            <a href="discordapp.com/user/40silent" class="btn-social">DISCORD</a>
+        <div class="bento-card span-2 reveal" style="display: flex; align-items: center; gap: 20px;">
+            <div style="min-width: 50px; height: 50px; background: #1db954; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
+                <svg width="24" height="24" fill="#fff" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.84.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.6.18-1.2.72-1.38 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.56.3z"/></svg>
+            </div>
+            <div>
+                <p style="font-size: 0.7rem; opacity: 0.5;">LISTENING TO</p>
+                <p style="font-weight: 900; font-size: 0.9rem;">Nothing</p>
+            </div>
+        </div>
+
+        <div class="bento-card span-2 reveal" style="display: flex; gap: 10px; justify-content: center; align-items: center;">
             <a href="https://github.com/SkeleAdvyy" class="btn-social">GITHUB</a>
             <a href="https://www.instagram.com/addivisblao" class="btn-social">INSTA</a>
         </div>
 
-        <div class="bento-card span-2 reveal" id="ban-trigger" style="background: #fff; color: #000; text-align: center; padding: 20px;">
-            <p style="font-size: 0.6rem; font-weight: 900; opacity: 0.5; letter-spacing: 3px;">TOTAL BANS</p>
-            <div id="banNumber" style="font-size: 4rem; font-weight: 900; line-height: 1;">0</div>
-            <p style="font-size: 0.7rem; font-weight: 900; color: var(--accent);">MISSED AGAIN</p>
-        </div>
-
     </main>
 
-    <footer style="text-align: center; padding: 40px; opacity: 0.3; font-size: 0.7rem; letter-spacing: 2px;">
-        &copy; 2026 SKELEADDIVI - COPYRIGHT
+    <footer style="text-align: center; padding: 60px 40px; opacity: 0.3; font-size: 0.7rem; letter-spacing: 2px; border-top: 1px solid var(--border-color);">
+        &copy; 2026 SKELEADDIVI — COPYRIGHT
     </footer>
 
     <script>
@@ -391,7 +392,7 @@
                     if(entry.target.id === 'ban-trigger') startBanCounter();
                 }
             });
-        }, { threshold: 0.15 });
+        }, { threshold: 0.1 });
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     
@@ -400,13 +401,13 @@
             let count = 0;
             if(banNum.innerText !== "0") return;
             const interval = setInterval(() => {
-                if (count >= 10) {
+                if (count >= 15) {
                     clearInterval(interval);
                     banNum.style.transform = "scale(1.2)";
                     setTimeout(() => banNum.style.transform = "scale(1)", 200);
                 }
                 else { count++; banNum.innerText = count; }
-            }, 100);
+            }, 80);
         }
     </script>
 </body>
