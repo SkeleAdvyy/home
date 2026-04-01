@@ -300,6 +300,62 @@
             .main-content { grid-template-columns: repeat(2, 1fr); }
             .span-2, .span-3, .span-4, .grid-title { grid-column: span 2; }
         }
+
+        @media (max-width: 600px) {
+            .navbar {
+                padding: 14px 20px;
+            }
+
+            .navbar > div:first-child {
+                font-size: 0.85rem;
+            }
+
+            .navbar > div:last-child {
+                gap: 12px;
+                font-size: 0.7rem;
+            }
+
+            .btn-aserix {
+                padding: 7px 14px;
+                font-size: 0.65rem;
+                letter-spacing: 1px;
+            }
+
+            .neon-circle {
+                width: 180px;
+                height: 180px;
+            }
+
+            .main-content {
+                grid-template-columns: 1fr;
+                padding: 20px 14px 80px 14px;
+                gap: 14px;
+            }
+
+            .span-2, .span-3, .span-4, .grid-title, .row-2 {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+
+            .grid-title {
+                font-size: 1.2rem;
+                letter-spacing: 2px;
+                margin-top: 30px;
+            }
+
+            .bento-card {
+                padding: 22px;
+                border-radius: 16px;
+            }
+
+            .terminal-header {
+                margin: -22px -22px 16px -22px;
+            }
+
+            .bento-card p, .bento-card span {
+                font-size: 0.82rem;
+            }
+        }
     </style>
 </head>
 <body>
