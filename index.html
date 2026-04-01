@@ -70,6 +70,51 @@
             to { transform: translateY(0); opacity: 1; }
         }
 
+        .btn-aserix {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 18px;
+            background: linear-gradient(90deg, #1a4fff, #00c3ff, #a259ff, #1a4fff);
+            background-size: 300% auto;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+            animation: gradientShift 4s linear infinite;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 10px rgba(41,98,255,0.4);
+        }
+
+        .btn-aserix::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -75%;
+            width: 50%;
+            height: 200%;
+            background: rgba(255,255,255,0.15);
+            transform: skewX(-20deg);
+            animation: sheen 3s ease-in-out infinite;
+        }
+
+        .btn-aserix:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 0 24px rgba(41,98,255,0.7), 0 0 60px rgba(162,89,255,0.25);
+            animation-duration: 1.5s;
+        }
+
+        @keyframes gradientShift {
+            to { background-position: 300% center; }
+        }
+
+        @keyframes sheen {
+            0%   { left: -75%; }
+            50%  { left: 125%; }
+            100% { left: 125%; }
+        }
+
         .hero {
             height: 100vh;
             display: flex;
@@ -250,9 +295,10 @@
 
     <nav class="navbar">
         <div style="font-weight: 900; letter-spacing: 2px;">SKELEADDIVI</div>
-        <div style="display: flex; gap: 20px; font-size: 0.8rem; font-weight: 600;">
+        <div style="display: flex; gap: 20px; font-size: 0.8rem; font-weight: 600; align-items: center;">
             <a href="#" style="color:#fff; text-decoration:none">HOME</a>
             <a href="/projects" style="color:#fff; text-decoration:none; opacity:0.6">PROJECTS</a>
+            <a href="/aserix" class="btn-aserix">ASERIX</a>
         </div>
     </nav>
 
